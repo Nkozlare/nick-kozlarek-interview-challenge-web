@@ -1,12 +1,6 @@
-import { useState } from "react";
 import YoutubeEmbed from "./youtubeEmbed";
 
-const Border = ({
-  seriesData,
-  selectedVideo,
-  setSelectedVideo,
-  videoReset,
-}) => {
+const Border = ({ seriesData, selectedVideo, videoReset }: any) => {
   return (
     <div
       className="border"

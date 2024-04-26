@@ -8,9 +8,7 @@ const Video = ({
   setVideoReset,
   setDebugError,
 }: any) => {
-  const [queryParams, setQueryParams] = useState(
-    new URLSearchParams(window.location.search)
-  );
+  const [queryParams] = useState(new URLSearchParams(window.location.search));
   const isDebugMode = queryParams.has("debug");
   // this takes in an amount of seconds and sends out a string that will either be minutes, or hours and minutes depending on how many seconds
   function formatDuration(seconds: number) {
