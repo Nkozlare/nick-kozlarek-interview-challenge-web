@@ -1,11 +1,17 @@
 import arrowRight from "../../public/icons/chevron-right-circle-svgrepo-com.svg";
+import { useState, useEffect } from "react";
 const Video = ({
   video,
   selectedVideo,
   setSelectedVideo,
   videoReset,
   setVideoReset,
+  setDebugError,
 }) => {
+  const [queryParams, setQueryParams] = useState(
+    new URLSearchParams(window.location.search)
+  );
+  const isDebugMode = queryParams.has("debug");
   // this takes in an amount of seconds and sends out a string that will either be minutes, or hours and minutes depending on how many seconds
   function formatDuration(seconds: number) {
     if (seconds === 0) return "0 minutes";
@@ -24,10 +30,13 @@ const Video = ({
 
   const select = () => {
     if (selectedVideo?.youtubeId === video.youtubeId) {
-      console.log("the same");
       return;
     }
-    console.log(video);
+    // for the debug mode, randomly 50% chance that it will not load
+    if (isDebugMode && Math.random() < 0.5) {
+      setDebugError(true);
+      return;
+    }
     setSelectedVideo(video);
     setVideoReset(videoReset + 1);
   };

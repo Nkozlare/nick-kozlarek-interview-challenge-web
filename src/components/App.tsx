@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Border from "./border";
 import Videos from "./videos";
+import AppNotification from "./appNotification";
 
 export const App = () => {
   // Set up some stateful variables that will be used globally
@@ -10,6 +11,8 @@ export const App = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   // When clicking on a new video, this will reset the ui for the video section
   const [videoReset, setVideoReset] = useState(0);
+  // for when the debug param is in the url.
+  const [debugError, setDebugError] = useState(false);
   // Fetch request to get all of the information from the the data.json file
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +41,9 @@ export const App = () => {
         setSelectedVideo={setSelectedVideo}
         videoReset={videoReset}
         setVideoReset={setVideoReset}
+        setDebugError={setDebugError}
       />
+      <AppNotification debugError={debugError} setDebugError={setDebugError} />
     </div>
   ) : (
     <h1>Loading...</h1>

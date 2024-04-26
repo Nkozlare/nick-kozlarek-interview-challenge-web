@@ -7,6 +7,7 @@ const Videos = ({
   setSelectedVideo,
   videoReset,
   setVideoReset,
+  setDebugError
 }) => {
   const videoMap = seriesData.videos.map((video, i) => {
     return (
@@ -17,6 +18,7 @@ const Videos = ({
           setSelectedVideo={setSelectedVideo}
           videoReset={videoReset}
           setVideoReset={setVideoReset}
+          setDebugError={setDebugError}
         />
       </div>
     );

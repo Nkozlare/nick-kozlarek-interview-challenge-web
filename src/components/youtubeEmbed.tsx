@@ -1,14 +1,20 @@
 import { useState, useEffect, useRef } from "react";
+
 function YoutubeEmbed({ youtubeId, videoReset, selectedVideo }) {
-  const embedUrl = `https://www.youtube.com/embed/${youtubeId}`;
   const [playing, setPlaying] = useState(false);
-  const videoRef = useRef(null);
+  const embedUrl = `https://www.youtube.com/embed/${youtubeId}`;
+  const [queryParams, setQueryParams] = useState(
+    new URLSearchParams(window.location.search)
+  );
+
   useEffect(() => {
     setPlaying(false);
   }, [videoReset]);
+
   const play = () => {
     setPlaying(true);
   };
+
   return (
     <div className="youtube-embed">
       {!playing && (
@@ -36,15 +42,16 @@ function YoutubeEmbed({ youtubeId, videoReset, selectedVideo }) {
           </p>
         </div>
       )}
-      <iframe
-        ref={videoRef}
-        width="853"
-        height="480"
-        src={embedUrl}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title="Embedded youtube"
-      />
+      <div className="youtube-embed">
+        <iframe
+          width="853"
+          height="480"
+          src={embedUrl}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        />
+      </div>
     </div>
   );
 }
