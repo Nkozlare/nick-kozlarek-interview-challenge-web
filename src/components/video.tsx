@@ -1,5 +1,5 @@
 import arrowRight from "../../public/icons/chevron-right-circle-svgrepo-com.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const Video = ({
   video,
   selectedVideo,
@@ -7,7 +7,7 @@ const Video = ({
   videoReset,
   setVideoReset,
   setDebugError,
-}) => {
+}: any) => {
   const [queryParams, setQueryParams] = useState(
     new URLSearchParams(window.location.search)
   );
@@ -43,6 +43,9 @@ const Video = ({
 
   return (
     <div className="video-card up" onClick={select}>
+      {selectedVideo?.youtubeId === video.youtubeId && (
+        <span className="selected">SELECTED</span>
+      )}
       <img src={video.images.medium} alt={`image of ${video.title}`} />
       <h3>{video.title}</h3>
       <p>{video.description}</p>

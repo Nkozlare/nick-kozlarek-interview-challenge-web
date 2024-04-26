@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-function YoutubeEmbed({ youtubeId, videoReset, selectedVideo }) {
+function YoutubeEmbed({ youtubeId, videoReset, selectedVideo }: any) {
   const [playing, setPlaying] = useState(false);
   const embedUrl = `https://www.youtube.com/embed/${youtubeId}`;
-  const [queryParams, setQueryParams] = useState(
-    new URLSearchParams(window.location.search)
-  );
 
   useEffect(() => {
     setPlaying(false);

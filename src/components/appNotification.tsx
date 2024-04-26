@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
 import alertImage from "../../public/icons/alert.svg";
 import xImage from "../../public/icons/x.svg";
-const AppNotification = ({ debugError, setDebugError }) => {
+const AppNotification = ({ debugError, setDebugError }: any) => {
   return (
     debugError && (
-      <div className="debugNotification fade-in-message">
+      <div className="debug-notification fade-in-message">
         <img
           src={xImage}
           className="debug-close"

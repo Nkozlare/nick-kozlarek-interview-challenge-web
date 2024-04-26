@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Video from "./video";
 
 const Videos = ({
@@ -7,9 +6,9 @@ const Videos = ({
   setSelectedVideo,
   videoReset,
   setVideoReset,
-  setDebugError
-}) => {
-  const videoMap = seriesData.videos.map((video, i) => {
+  setDebugError,
+}: any) => {
+  const videoMap = seriesData.videos.map((video: any, i: number) => {
     return (
       <div key={i}>
         <Video
