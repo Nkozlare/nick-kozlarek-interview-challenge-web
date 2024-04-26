@@ -16,7 +16,7 @@ export const App = () => {
   // Fetch request to get all of the information from the the data.json file
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("../../public/api/data.json");
+      const response = await fetch("../../api/data.json");
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
