@@ -1,6 +1,12 @@
 import { useState } from "react";
+import YoutubeEmbed from "./youtubeEmbed";
 
-const Border = ({ seriesData, selectedVideo, setSelectedVideo }) => {
+const Border = ({
+  seriesData,
+  selectedVideo,
+  setSelectedVideo,
+  videoReset,
+}) => {
   return (
     <div
       className="border"
@@ -14,6 +20,15 @@ const Border = ({ seriesData, selectedVideo, setSelectedVideo }) => {
           <p>{seriesData.description}</p>
         </div>
       </div>
+      {selectedVideo && (
+        <div className="right-column">
+          <YoutubeEmbed
+            youtubeId={selectedVideo.youtubeId}
+            selectedVideo={selectedVideo}
+            videoReset={videoReset}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -8,6 +8,8 @@ export const App = () => {
   const [seriesData, setSeriesData] = useState(null);
   // This object will contain all of the video information
   const [selectedVideo, setSelectedVideo] = useState(null);
+  // When clicking on a new video, this will reset the ui for the video section
+  const [videoReset, setVideoReset] = useState(0);
   // Fetch request to get all of the information from the the data.json file
   useEffect(() => {
     const fetchData = async () => {
@@ -28,11 +30,14 @@ export const App = () => {
         seriesData={seriesData}
         selectedVideo={selectedVideo}
         setSelectedVideo={setSelectedVideo}
+        videoReset={videoReset}
       />
       <Videos
         seriesData={seriesData}
         selectedVideo={selectedVideo}
         setSelectedVideo={setSelectedVideo}
+        videoReset={videoReset}
+        setVideoReset={setVideoReset}
       />
     </div>
   ) : (

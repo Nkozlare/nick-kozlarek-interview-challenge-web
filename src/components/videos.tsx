@@ -1,11 +1,23 @@
 import { useState } from "react";
 import Video from "./video";
 
-const Videos = ({ seriesData, selectedVideo, setSelectedVideo }) => {
+const Videos = ({
+  seriesData,
+  selectedVideo,
+  setSelectedVideo,
+  videoReset,
+  setVideoReset,
+}) => {
   const videoMap = seriesData.videos.map((video, i) => {
     return (
       <div key={i}>
-        <Video video={video} />
+        <Video
+          video={video}
+          selectedVideo={selectedVideo}
+          setSelectedVideo={setSelectedVideo}
+          videoReset={videoReset}
+          setVideoReset={setVideoReset}
+        />
       </div>
     );
   });

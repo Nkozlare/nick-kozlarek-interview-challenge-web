@@ -1,5 +1,11 @@
 import arrowRight from "../../public/icons/chevron-right-circle-svgrepo-com.svg";
-const Video = ({ video }) => {
+const Video = ({
+  video,
+  selectedVideo,
+  setSelectedVideo,
+  videoReset,
+  setVideoReset,
+}) => {
   // this takes in an amount of seconds and sends out a string that will either be minutes, or hours and minutes depending on how many seconds
   function formatDuration(seconds: number) {
     if (seconds === 0) return "0 minutes";
@@ -16,8 +22,18 @@ const Video = ({ video }) => {
       : hoursString || minutesString;
   }
 
+  const select = () => {
+    if (selectedVideo?.youtubeId === video.youtubeId) {
+      console.log("the same");
+      return;
+    }
+    console.log(video);
+    setSelectedVideo(video);
+    setVideoReset(videoReset + 1);
+  };
+
   return (
-    <div className="video-card">
+    <div className="video-card up" onClick={select}>
       <img src={video.images.medium} alt={`image of ${video.title}`} />
       <h3>{video.title}</h3>
       <p>{video.description}</p>
